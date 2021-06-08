@@ -1,4 +1,4 @@
-﻿Shader "Custom/UnlitParticle01"
+﻿Shader "Custom/UnlitParticle02"
 {
     Properties
     {
@@ -13,8 +13,8 @@
         Cull Off
         ZWrite Off
         // ColorMask RGB
-        Blend SrcAlpha One
-        // Blend SrcAlpha OneMinusSrcAlpha
+        // Blend SrcAlpha One
+        Blend SrcAlpha OneMinusSrcAlpha
         // Blend SrcAlpha One, One One
 
         Pass
@@ -63,12 +63,7 @@
                 fixed4 tex = tex2D(_MainTex, i.uv);
                 fixed4 col = tex;
                 // col.rgb *= i.color.rgb;
-                
-                // Use i.color to use all 4 channels insteaad of only using RGB.
-                // This makes includes the alpha generated in the particle system
-                // into the color calculation.
                 col *= i.color;
-                
                 // if(i.color.r < 0.05 && i.color.g < 0.05 && i.color.b < 0.05) 
                 // {
                 //     col.a = (1-tex.r);
